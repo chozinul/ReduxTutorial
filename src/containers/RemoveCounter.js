@@ -13,7 +13,7 @@ class RemoveCounter extends Component {
                 <div className="control">
                   <button className="button is-primary" 
                       onClick={(e) => {e.preventDefault();this.props.dispatch(removeCounter())}}>
-                      Remove
+                      Remove {this.props.count}
                   </button>
                 </div>
               </div>
@@ -22,8 +22,20 @@ class RemoveCounter extends Component {
      )
    }
 }
+
+// function mapDispatchToProps(dispatch) {
+//   return { actions: bindActionCreators(removeCounter, dispatch) }
+// }
+
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(removeCounter, dispatch) }
+  let actions = bindActionCreators({ removeCounter });
+  return { ...actions, dispatch };
 }
 
-export default connect(mapDispatchToProps)(RemoveCounter);
+function mapStateToProps(state){
+  return {
+    count: state.counterReducer,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RemoveCounter);

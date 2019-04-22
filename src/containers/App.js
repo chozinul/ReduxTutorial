@@ -10,16 +10,18 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="container">
-      <Counter></Counter><br />
-      <div className="columns">
-        <div className="column is-11">
-          <AddCounter></AddCounter>
+      <div>
+        <div>
+          <div>
+            <AddCounter></AddCounter>
+          </div>
+          <div>
+            <RemoveCounter></RemoveCounter>
+          </div>
         </div>
-        <div className="column auto">
-          <RemoveCounter></RemoveCounter>
+        <div>
+          <Counter></Counter>
         </div>
-      </div>
       </div>
     );
   }
